@@ -1,0 +1,20 @@
+{
+  "guest_restrictions": {
+    "min_heat_setpoint": 65,
+    "max_heat_setpoint": 75,
+    "min_cool_setpoint": 70,
+    "max_cool_setpoint": 78,
+    "allow_mode_change": false,
+    "allowed_modes": ["Heat"],
+    "default_mode": "Heat"
+  },
+  "comments": {
+    "min_heat_setpoint": "Minimum temperature guests can set in Heat mode (degrees F)",
+    "max_heat_setpoint": "Maximum temperature guests can set in Heat mode (degrees F)",
+    "min_cool_setpoint": "Minimum temperature guests can set in Cool mode (degrees F)",
+    "max_cool_setpoint": "Maximum temperature guests can set in Cool mode (degrees F)",
+    "allow_mode_change": "Whether guests can change between Heat/Cool/Off modes",
+    "allowed_modes": "Which modes guests can select if mode changes are allowed (Heat, Cool, Off, Auto)",
+    "default_mode": "The mode to use if guests cannot change it"
+  }
+}
