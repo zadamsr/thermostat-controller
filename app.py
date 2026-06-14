@@ -43,10 +43,6 @@ def get_status():
             'default_mode': restrictions['default_mode']
         }
 
-        # Override mode if guests can't change it
-        if not restrictions['allow_mode_change']:
-            status['mode'] = restrictions['default_mode']
-
         return jsonify(status)
     except Exception as e:
         return jsonify({"error": str(e)}), 500
@@ -71,7 +67,10 @@ def set_temp():
 
         # Check mode restrictions
         if not restrictions['allow_mode_change']:
-            mode = restrictions['default_mode']
+            # Preserve the thermostat's current live mode when guests are not
+            # allowed to switch between Heat/Cool/Off.
+            current_status = thermostat_api.get_thermostat_status()
+            mode = current_status.get('mode') or restrictions['default_mode']
         elif mode not in restrictions['allowed_modes']:
             return jsonify({"error": f"Mode '{mode}' is not allowed"}), 403
 
